@@ -17,13 +17,13 @@ const App = () => {
 
       <Provider>
         <Suspense fallback="Loading...">
-          <Pokemon name="charmander" />
-          <Pokemon name="bulbasaur" />
+          <Pokemon className="orange" name="charmander" />
+          <Pokemon className="orange" name="bulbasaur" />
         </Suspense>
       </Provider>
       <Provider>
         <Suspense fallback="Loading...">
-          <Pokemon name="pikachu" />
+          <Pokemon className="green" name="pikachu" />
         </Suspense>
       </Provider>
     </div>

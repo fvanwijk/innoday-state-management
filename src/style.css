@@ -10,3 +10,11 @@ body {
   border: 2px solid blue;
   padding: 10px;
 }
+.orange {
+  border: 2px solid orange;
+  padding: 10px;
+}
+.green {
+  border: 2px solid green;
+  padding: 10px;
+}

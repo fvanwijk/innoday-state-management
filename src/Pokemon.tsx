@@ -1,18 +1,15 @@
-import { atom, useAtom } from "jotai";
-import { atomWithQuery } from "jotai/query";
+import { useAtom } from "jotai";
 import React, { useEffect } from "react";
-import { QueryFunctionContext, QueryKey } from "react-query";
 
-const idAtom = atom("charmander");
-const pokemonAtom = atomWithQuery((get) => ({
-  queryKey: ["pokemon", get(idAtom)],
-  queryFn: async ({
-    queryKey: [, name],
-  }: QueryFunctionContext<QueryKey, any>) =>
-    (await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)).json(),
-}));
+import { idAtom, pokemonAtom } from "./atoms";
 
-export const Pokemon = ({ name }: { name: string }) => {
+export const Pokemon = ({
+  className,
+  name,
+}: {
+  className: string;
+  name: string;
+}) => {
   const [, setId] = useAtom(idAtom);
   const [pokemon] = useAtom(pokemonAtom);
 
@@ -21,8 +18,9 @@ export const Pokemon = ({ name }: { name: string }) => {
   }, [setId, name]);
 
   return (
-    <div>
+    <div className={className} style={{ margin: "1rem" }}>
       {/* <pre>{JSON.stringify(pokemon)}</pre> */}
+      <h2>{name}</h2>
       <img
         src={pokemon.sprites.other.dream_world.front_default}
         alt={pokemon.name}
